@@ -14,10 +14,10 @@ const NavBar = () => {
 
 
     return (
-        <div className="navbar fixed z-0 bg-opacity-20 max-w-screen-xl bg-black text-white rounded-b-lg">
+        <div className="navbar fixed z-10 bg-opacity-20 max-w-screen-xl bg-black text-white rounded-b-lg">
 
             <div className="navbar-start">
-                <Link className="normal-case text-lg md:text-3xl font-bold">Employe Mangement</Link>
+                <Link className="normal-case text-lg md:text-3xl font-semibold">Employee Management</Link>
             </div>
 
             <div className="navbar-center">

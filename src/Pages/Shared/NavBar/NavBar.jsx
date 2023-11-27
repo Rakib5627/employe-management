@@ -1,13 +1,24 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
 
 
 const NavBar = () => {
 
+    const { user, logOut } = useContext(AuthContext);
+
+
+    const handleSignOut = () => {
+        logOut()
+            .then()
+            .catch()
+    }
+
 
     const navLinks = <>
         <li className=""><NavLink to="/">Home</NavLink></li>
-        <li className=""><NavLink to="/about">About</NavLink></li>
-        <li className=""><NavLink to="/services">Service</NavLink></li>
+        <li className=""><NavLink to="/dashboard">Dashboard</NavLink></li>
+        <li className=""><NavLink to="/contactUs">Contact Us</NavLink></li>
     </>
 
 
@@ -39,27 +50,25 @@ const NavBar = () => {
 
             <div className="navbar-end">
                 {
-                    // user ? <>
-                    //     <div>
-                    //         <div className="dropdown dropdown-end">
-                    //             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                    //                 <div className=" w-6 md:w-10 rounded-full">
-                    //                     {user.photoURL ? (
-                    //                         <img src={user.photoURL} alt="Image 1" />
-                    //                     ) : (
-                    //                         <img src={userimg} alt="" />
-                    //                     )}
-                    //                 </div>
-                    //             </label>
-                    //             <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                    //                 <li>{user.displayName}</li>
-                    //                 <li>{user.email}</li>
-                    //                 <li onClick={handleSignOut}>Logout</li>
-                    //             </ul>
-                    //         </div>
-                    //     </div>
-                    // </>
-                    //     :
+                    user ? <>
+                        <div>
+                            <div className="dropdown dropdown-end">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    <div className=" w-6 md:w-10 rounded-full">
+                                    
+                                            <img src={user.photoURL} alt="Image 1" />
+                                        
+                                    </div>
+                                </label>
+                                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                    <li>{user.displayName}</li>
+                                    <li>{user.email}</li>
+                                    <li onClick={handleSignOut}>Logout</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </>
+                        :
                     <><p className="p-2 text-xs md:text-base text-blue-600 font-semibold hover:font-bold"><NavLink to="/login">Login</NavLink></p>
                         <Link className="hidden md:block p-2 text-blue-600 font-semibold hover:font-bold" to="/signup">Register</Link></>
                 }

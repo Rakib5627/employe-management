@@ -45,7 +45,7 @@ const SignUp = () => {
                                     console.log('user added to the database')
                                     reset();
                                     Swal.fire({
-                                        position: 'top-center',
+                                        position: 'center',
                                         title: 'User created successfully.',
                                         showConfirmButton: false,
                                         timer: 1000
@@ -102,9 +102,7 @@ const SignUp = () => {
                         <button className="btn bg-my-pink hover:bg-my-red">Register</button>
                     </div>
                 </form>
-                {/* <p className="text-center mt-4">Already have an account? <Link className="text-blue-600 font-bold" to="/login">Login Here</Link></p>
-                <div className="border border-x-1 opacity-20"></div>
-                <p className="mt-4 text-center"><button onClick={handleGoogleSignIn} className="btn btn-ghost">Sign in with Google</button></p> */}
+                
             </div>
         </div>
     );

@@ -4,6 +4,8 @@ import Home from "../Pages/Home/Home/Home";
 import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/Login/Login";
 import ContactUs from "../Pages/ContactUs/ContactUs";
+import Dashboard from "../Layouts/Dashboard";
+import Admin from "../Pages/Dashboard/Admin/Admin";
 
 
 
@@ -32,4 +34,15 @@ export const router = createBrowserRouter([
        
       ],
     },
+    {
+      path: "dashboard",
+      element: <Dashboard></Dashboard> ,
+      children: [
+        {
+          path: "admin",
+          element: <Admin></Admin> ,
+        },
+        
+      ],
+    }
   ]);

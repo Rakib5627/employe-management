@@ -72,7 +72,7 @@ export const router = createBrowserRouter([
         {
           path: "details/:id",
           element: <HrRoute><DetailsSlug></DetailsSlug></HrRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`),
+          loader: ({params}) => fetch(`https://employee-management-server-12.vercel.app/users/${params.id}`),
           
         },
         {

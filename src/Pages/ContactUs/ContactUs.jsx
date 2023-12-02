@@ -27,7 +27,7 @@ const ContactUs = () => {
 
         // console.log(review);
 
-        fetch('http://localhost:5000/contacts', {
+        fetch('https://employee-management-server-12.vercel.app/contacts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

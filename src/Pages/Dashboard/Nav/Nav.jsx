@@ -47,15 +47,16 @@ const Nav = () => {
                         </> :
 
                             <>
-                                <li>
-                                    <NavLink to="/dashboard/paymenthistory">
-                                        <FaList></FaList>
-                                        Payment History</NavLink>
-                                </li>
+                               
                                 <li>
                                     <NavLink to="/dashboard/worksheet">
                                         <FaBook></FaBook>
                                         Work Sheet</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/dashboard/paymenthistory">
+                                        <FaList></FaList>
+                                        Payment History</NavLink>
                                 </li>
 
                             </>

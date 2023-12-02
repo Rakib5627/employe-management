@@ -26,7 +26,7 @@ const NavBar = () => {
 
 
     return (
-        <div className="navbar fixed z-10 bg-opacity-20 max-w-screen-xl bg-black text-white rounded-b-lg">
+        <div className="navbar  max-w-screen-xl bg-purple-800 text-white rounded-b-lg">
 
             <div className="navbar-start">
                 <Link className="normal-case text-lg md:text-3xl font-semibold">Employee Management</Link>

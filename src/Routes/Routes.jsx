@@ -13,6 +13,9 @@ import EmployeeList from "../Pages/Dashboard/HR/EmployeeList";
 import Progress from "../Pages/Dashboard/HR/Progress";
 import DetailsSlug from "../Pages/Dashboard/HR/DetailsSlug";
 import WorksheetTable from "../Pages/Dashboard/Employee/WorksheetTable";
+import Top from "../Pages/Dashboard/Nav/Top";
+import AdminRoute from "./AdminRoute";
+import HrRoute from "./HrRoute";
 
 
 
@@ -46,41 +49,40 @@ export const router = createBrowserRouter([
       element: <PrivateRoute><Dashboard></Dashboard> </PrivateRoute>,
       children: [
         {
+          path: "dashboard",
+          element: <Top></Top> ,
+        },
+        {
           path: "admin",
-          element: <Admin></Admin> ,
+          element: <AdminRoute><Admin></Admin></AdminRoute> ,
         },
         {
           path: "users",
-          element: <AllUsers></AllUsers> ,
+          element: <AdminRoute><AllUsers></AllUsers></AdminRoute> ,
         },
         {
           path: "worksheet",
-          element: <WorkSheet></WorkSheet>,
+          element: <PrivateRoute><WorkSheet></WorkSheet></PrivateRoute>,
         },
         {
           path: "employeelist",
-          element: <EmployeeList></EmployeeList>,
+          element: <HrRoute><EmployeeList></EmployeeList></HrRoute>,
           
         },
         {
           path: "details/:id",
-          element: <DetailsSlug></DetailsSlug>,
+          element: <HrRoute><DetailsSlug></DetailsSlug></HrRoute>,
           loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`),
           
         },
         {
           path: "progress",
-          element: <Progress></Progress>,
-          
-        },
-        {
-          path: "worksheet",
-          element: <WorkSheet></WorkSheet>,
+          element: <HrRoute><Progress></Progress></HrRoute>,
           
         },
         {
           path: "paymenthistory",
-          element: <WorksheetTable></WorksheetTable>,
+          element: <PrivateRoute><WorksheetTable></WorksheetTable></PrivateRoute>,
           
         },
         

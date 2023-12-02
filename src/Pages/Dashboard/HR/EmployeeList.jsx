@@ -16,7 +16,7 @@ const EmployeeList = () => {
     const [employee, refetch] = useEmployees();
 
 
-    // console.log(employee);
+  
 
 
 

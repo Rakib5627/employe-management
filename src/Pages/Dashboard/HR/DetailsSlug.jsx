@@ -1,16 +1,15 @@
 import { useLoaderData } from "react-router-dom";
-import useEmployees from "../../../hooks/useEmployees";
+
 
 
 
 const DetailsSlug = () => {
 
     const details = useLoaderData();
-    console.log(details)
+  
 
 
-    const [employee] = useEmployees();
-    console.log(employee)
+  
     return (
         <div>
             <div className="card lg:card-side bg-base-100 shadow-xl">

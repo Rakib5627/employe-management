@@ -15,7 +15,7 @@ const WorkSheet = () => {
 
     const [date, setDate] = useState(null);
     const {user} = useAuth();
-    // console.log(user.displayName);
+    
     
     const [work , refetch] = useWorksheet();
     
@@ -29,7 +29,7 @@ const WorkSheet = () => {
         const dailyHour = form.hour.value;
         const date = form.date.value;
 
-        // console.log(dailyHour);
+       
 
         const workDetails = {
            employeeName : user.displayName,
@@ -39,10 +39,10 @@ const WorkSheet = () => {
            date
         }
 
-        // console.log(workDetails);
+     
         const workRes = await axiosSecure.post('/works', workDetails);
        
-        // console.log(workRes.data)
+       
         if(workRes.data.insertedId){ 
            refetch();
             Swal.fire({

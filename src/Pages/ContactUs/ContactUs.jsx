@@ -25,7 +25,7 @@ const ContactUs = () => {
             
         }
 
-        // console.log(review);
+       
 
         fetch('https://employee-management-server-12.vercel.app/contacts', {
             method: 'POST',
@@ -36,7 +36,7 @@ const ContactUs = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+               
                 if (data.insertedId) {
                     Swal.fire({
                         position: "center",

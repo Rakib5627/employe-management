@@ -17,7 +17,7 @@ const AllUsers = () => {
     const handleMakeHr = user => {
         axiosSecure.patch(`/users/hr/${user._id}`)
             .then(res => {
-                console.log(res.data)
+              
                 if (res.data.modifiedCount > 0) {
                     refetch();
                     Swal.fire({
@@ -45,7 +45,7 @@ const AllUsers = () => {
 
                 axiosSecure.patch(`/users/fire/${user._id}`)
                     .then(res => {
-                        console.log(res.data)
+                       
                         if (res.data.modifiedCount > 0) {
                             refetch();
                             Swal.fire({

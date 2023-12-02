@@ -46,31 +46,28 @@ const AuthProvider = ({children}) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            const userEmail = currentUser?.email || user?.email;
-            const loggedUser = { email: userEmail };
             setUser(currentUser);
-            console.log('current user', currentUser);
-            setLoading(false);
-            // if user exist then issue a token here
             if (currentUser) {
-                axiosPublic.post('/jwt', loggedUser, { withCredentials: true })
+                // get token and store client
+                const userInfo = { email: currentUser.email };
+                axiosPublic.post('/jwt', userInfo)
                     .then(res => {
-                        console.log('token response', res.data);
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token);
+                            
+                        }
                     })
             }
             else {
-                axiosPublic.post('/logout', loggedUser, {
-                    withCredentials: true
-                })
-                    .then(res => {
-                        console.log(res.data);
-                    })
+                // TODO: remove token (if token stored in the client side: Local storage, caching, in memory)
+                localStorage.removeItem('access-token');
             }
+            setLoading(false);
         });
         return () => {
             return unsubscribe();
         }
-    }, [])
+    }, [axiosPublic])
 
     const authInfo = {
         user,

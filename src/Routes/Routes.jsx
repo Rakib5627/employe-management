@@ -6,6 +6,13 @@ import Login from "../Pages/Login/Login";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import Dashboard from "../Layouts/Dashboard";
 import Admin from "../Pages/Dashboard/Admin/Admin";
+import AllUsers from "../Pages/Dashboard/AllUser/AllUsers";
+import PrivateRoute from "./PrivateRoute";
+import WorkSheet from "../Pages/Dashboard/Employee/WorkSheet";
+import EmployeeList from "../Pages/Dashboard/HR/EmployeeList";
+import Progress from "../Pages/Dashboard/HR/Progress";
+import DetailsSlug from "../Pages/Dashboard/HR/DetailsSlug";
+import WorksheetTable from "../Pages/Dashboard/Employee/WorksheetTable";
 
 
 
@@ -20,7 +27,7 @@ export const router = createBrowserRouter([
           element: <Home></Home>,
         },
         {
-          path: "/signup",
+          path: "/register",
           element: <SignUp></SignUp>,
         },
         {
@@ -36,11 +43,45 @@ export const router = createBrowserRouter([
     },
     {
       path: "dashboard",
-      element: <Dashboard></Dashboard> ,
+      element: <PrivateRoute><Dashboard></Dashboard> </PrivateRoute>,
       children: [
         {
           path: "admin",
           element: <Admin></Admin> ,
+        },
+        {
+          path: "users",
+          element: <AllUsers></AllUsers> ,
+        },
+        {
+          path: "worksheet",
+          element: <WorkSheet></WorkSheet>,
+        },
+        {
+          path: "employeelist",
+          element: <EmployeeList></EmployeeList>,
+          
+        },
+        {
+          path: "details/:id",
+          element: <DetailsSlug></DetailsSlug>,
+          loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`),
+          
+        },
+        {
+          path: "progress",
+          element: <Progress></Progress>,
+          
+        },
+        {
+          path: "worksheet",
+          element: <WorkSheet></WorkSheet>,
+          
+        },
+        {
+          path: "paymenthistory",
+          element: <WorksheetTable></WorksheetTable>,
+          
         },
         
       ],

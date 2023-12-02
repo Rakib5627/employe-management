@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const img_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const img_hosting_api = `https://api.imgbb.com/1/upload?expiration=600&key=${img_hosting_key}`;
+const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
 
 const SignUp = () => {
 
@@ -24,7 +24,7 @@ const SignUp = () => {
             }
         });
 
-        // console.log(res.data)
+        console.log(res.data)
 
         createUser(data.email, data.password)
             .then(result => {
@@ -36,7 +36,10 @@ const SignUp = () => {
                             name: data.name,
                             role: data.role,
                             email: data.email,
-                            image: res.data.data.display_url
+                            salary: data.salary,
+                            bank: data.bank,
+                            image: res?.data?.data?.display_url
+                     
 
                         }
                         axiosPublic.post('/users', userInfo)
@@ -74,7 +77,7 @@ const SignUp = () => {
                     </div>
 
                     <div className="form-control w-full my-6">
-                        <input {...register('image', { required: true })} type="file" className=" border-2 border-gray-500" />
+                        <input {...register('image', {})} type="file" className=" border-2 border-gray-500" />
                     </div>
                     <div className="form-control">
                         <label className="label">
@@ -88,9 +91,21 @@ const SignUp = () => {
 
                     <div className="form-control">
                         <label className="label">
+                            <span className="label-text">Account No.</span>
+                        </label>
+                        <input type="number"  {...register("bank", { required: true })} name="bank" placeholder="Account No." className="input input-bordered" required />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Salary</span>
+                        </label>
+                        <input type="number"  {...register("salary", { required: true })} name="salary" placeholder="salary" className="input input-bordered" required />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="email"  {...register("email", { required: true })} name="email" placeholder="Email" className="input input-bordered" required />
+                        <input type="email"  {...register("email", { required: true })} name="email" placeholder="example@gmail.com" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">

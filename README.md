@@ -1,6 +1,6 @@
 # Hotel Grand Palace
 
-https://employee-management-2ef60.web.app/
+https://bejewelled-youtiao-b7e53f.netlify.app
 
 # Website Features
 
